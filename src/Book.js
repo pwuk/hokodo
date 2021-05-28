@@ -9,8 +9,8 @@ import {Error} from "./Error";
 const Book = () => {
     const {isbn: isbnParameter} = useParams();
     const history = useHistory();
-    const [bookData, error] = useContext(DataContext);
-    if (error) return <Error error={error}/>;
+    const [bookData, contextDataError] = useContext(DataContext);
+    if (contextDataError) return <Error error={contextDataError}/>;
 
    const BackButton = ()=>
        <button onClick={() => history.push('/')}
