@@ -7,7 +7,48 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.book-list ul {
+  display: grid;
+  justify-content: center;
+}
+
+.book-thumbnail {
+  padding:10px;
+  margin:5px;
+  border: 1px solid;
+  display: flex;
+  gap: 4px;
+}
+.book-thumbnail li {
+  flex: 1;
+}
+
+.book-text-info {
+  margin-left:10px;
+  text-align: left;
+  width:80%;
+}
+
+.book-image, .more-info {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
+.link-button {
+  font-size: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  color: #069;
+}
+
+.default-cover-image {
+  opacity: 0.5;
 }
