@@ -11,29 +11,32 @@ const BookList = ({authorName, isbn}) => {
     const [allTheBooks, error] = useContext(DataContext);
     if (error) return <Error error={error}/>
 
-    const bookList =authorName ? filterBooksByAuthorAnbISBN(allTheBooks, authorName, isbn) :
+    const bookList = authorName ? filterBooksByAuthorAnbISBN(allTheBooks, authorName, isbn) :
         allTheBooks;
 
     return (
         <article className={'book-list'}>
             <AuthorSummary authorName={authorName} isbn={isbn} listCount={bookList.length}/>
             <ul>
-                {bookList.map((book, index) => {
-                    return <li key={book.id} className={'book-thumbnail'}>
-                        <CoverImage size={'S'} book={book}/>
-                        <div className={'book-text-info'}>
-                            <p>{book.author}</p>
-                            <p>{book.title}</p>
-                        </div>
-                        <div className={'more-info'}>
-                            <button
-                                className={"link-button"}
-                                onClick={() => history.push(`/book/${book.isbn}`)}
-                                title={"More information about this book"}>
-                                More information
-                            </button>
-                        </div>
-                    </li>
+                {bookList.map(book => {
+                    return (
+                        <li key={book.id} className={'book-thumbnail'}>
+                            <CoverImage size={'S'} book={book}/>
+                            <div className={'book-text-info'}>
+                                <p>{book.title}</p>
+                                <p>{book.author}</p>
+                           </div>
+                            <div className={'more-info'}>
+                                <button
+                                    role={"link"}
+                                    className={"link-button"}
+                                    onClick={() => history.push(`/book/${book.isbn}`)}
+                                    title={"More information about this book"}>
+                                    More information
+                                </button>
+                            </div>
+                        </li>
+                    );
                 })}
             </ul>
         </article>

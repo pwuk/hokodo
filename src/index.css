@@ -13,10 +13,12 @@ li {
   padding: 0;
 }
 
-.book-list ul {
-  display: grid;
+.book-list {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-}
+  gap: 10px;
+ }
 
 .book-thumbnail {
   padding:10px;

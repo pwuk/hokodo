@@ -1,4 +1,4 @@
-const BOOK_COVER_URL = 'https://covers.openlibrary.org/b/isbn/';
+const BOOK_COVER_URL = process.env.REACT_APP_BOOK_COVER_URL;
 const IMAGE_SIZES = {
     'S' : {
         width:'44px',
@@ -9,6 +9,6 @@ const IMAGE_SIZES = {
         height:'500px'
     }
 };
-const API_URL = "//localhost:5000/books";
+const API_URL = process.env.REACT_APP_API_URL;
 
 export {BOOK_COVER_URL, IMAGE_SIZES, API_URL};

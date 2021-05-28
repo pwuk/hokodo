@@ -6,6 +6,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### `yarn start:api`
+
+This creates a json-server proxy to the remote API  
+(http://localhost:5000/books) to view it in the browser.
+
+
 ### `yarn start`
 
 Runs the app in the development mode.\
