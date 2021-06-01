@@ -4,7 +4,7 @@ import {BOOK_COVER_URL, IMAGE_SIZES} from './Constants';
 export default function CoverImage({book, imageSize = 'S'}) {
     const {width, height} = IMAGE_SIZES[imageSize];
     const unknownISBN = book.isbn === 'unknown';
-    const imageSource = unknownISBN ? '../generic-book.png' :
+    const imageSource = unknownISBN ? '/generic-book.png' :
         `${BOOK_COVER_URL}${book.isbn}-${imageSize}.jpg`;
 
     return (

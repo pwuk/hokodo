@@ -8,10 +8,11 @@ import {useFetch} from './hooks';
 import DataContext from "./dataContext";
 
 export default function App() {
-    const [bookData, error] = useFetch();
+    const [bookData, error, loading] = useFetch();
+
     return <div className="App">
-        <DataContext.Provider value={[bookData, error]}>
-            <Router>
+        <DataContext.Provider value={[bookData, error, loading]}>
+            <Router basename={"/hokodo"}>
                 <Route path="/" exact>
                     <>
                         <h1>Technology reading list</h1>

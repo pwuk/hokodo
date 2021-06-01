@@ -8,8 +8,9 @@ import {AuthorSummary} from "./AuthorSummary";
 
 const BookList = ({authorName, isbn}) => {
     const history = useHistory();
-    const [allTheBooks, contextDataError] = useContext(DataContext);
+    const [allTheBooks, contextDataError, loading] = useContext(DataContext);
     if (contextDataError) return <Error error={contextDataError}/>
+    if(loading) return <div className={'loading'}/>
 
     const bookList = authorName ? filterBooksByAuthorAnbISBN(allTheBooks, authorName, isbn) :
         allTheBooks;
