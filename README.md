@@ -1,3 +1,7 @@
+#Live demo
+https://sprocket.co.uk/hokodo
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -6,8 +10,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-### `yarn start:api`
 
+
+### `yarn start:api`
+(this is now redundant, as there is a remote proxy I am using) 
 This creates a json-server proxy to the remote API  
 (http://localhost:5000/books) to view it in the browser.
 
