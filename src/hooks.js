@@ -7,17 +7,31 @@ const useFetch = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        let controller = new AbortController();
         const fetchData = async () => {
             try {
-                const result = await fetch(API_URL);
+                const time = Date.now();
+                const result = await fetch(API_URL, {
+                    signal: controller.signal
+                });
                 const data = await result.json();
-                setLoading(false);
-                setTheData(data.books);
+
+                console.log(Date.now()-time);
+                setTimeout(()=>{
+                    controller = null;
+                    setLoading(false);
+                    setTheData(data.books);
+                    console.log(Date.now()-time);
+
+                }, 1500 - (Date.now() - time));
+
             }
             catch (error) {
                 setError(error);
                 setLoading(false)
             }
+
+            return ()=>controller && controller.abort();
         };
         setLoading(true);
         fetchData();

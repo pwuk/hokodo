@@ -21,8 +21,8 @@ const Book = () => {
         Back to list
         </button>;
 
-    const foundBook = bookData.find(book => book.isbn === isbnParameter);
-    if (!foundBook) {
+    const foundBookIndex = bookData.findIndex(book => book.isbn === isbnParameter);
+    if (foundBookIndex===-1) {
         return (
             <article className={"book-detail"}>
                 <BackButton />
@@ -30,16 +30,29 @@ const Book = () => {
             </article>
         );
     }
+    const foundBook = bookData[foundBookIndex];
     const {isbn, author, description, title} = foundBook;
+    const nextIndex = foundBookIndex + 1 % (bookData.length-1);
+    const prevIndex = foundBookIndex === 0 ? (bookData.length-1) : foundBookIndex - 1 % (bookData.length-1);
+    const {isbn: nextIsbn} = bookData[nextIndex];
+    const {isbn: prevIsbn} = bookData[prevIndex];
 
     return (
         <article className={"book-detail"}>
             <BackButton />
-            <h1>{title}</h1>
-            <h3>ISBN: {isbn}</h3>
-            <h2>{author}</h2>
-            <p>{description}</p>
-            <CoverImage imageSize={'L'} book={foundBook}/>
+            <div className={"book-detail-inner-container"}>
+              <button className={"book-detail-inner-left link-button"}
+                      onClick={()=>history.push(`/book/${prevIsbn}`)} >&lt;</button>
+              <div className={"book-detail-contents"}>
+                <h1>{title}</h1>
+                <h3>ISBN: {isbn}</h3>
+                <h2>{author}</h2>
+                <p className={"book-desc"}>{description}</p>
+                <CoverImage imageSize={'L'} book={foundBook}/>
+              </div>
+              <button className={"book-detail-inner-right link-button"}
+                        onClick={()=>history.push(`/book/${nextIsbn}`)} >&gt;</button>
+            </div>
             <BookList isbn={isbn} authorName={author}/>
         </article>
     );

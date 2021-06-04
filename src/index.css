@@ -57,7 +57,7 @@ li {
 }
 
 .book-text-info {
-  margin-left:10px;
+  /*margin-left:10px;*/
   text-align: left;
   width:80%;
 }
@@ -68,12 +68,28 @@ li {
   align-content: center;
 }
 .link-button {
-  font-size: 100%;
+  font-size: 1em;
   background: none;
   border: none;
   cursor: pointer;
   text-decoration: underline;
   color: #069;
+}
+
+.book-detail-inner-container {
+  display:flex;
+  flex-direction: row;
+  gap: 1em;
+}
+
+.book-detail-inner-left, .book-detail-inner-right {
+  display:grid;
+  align-items: center;
+  font-size:2em;
+  grid-gap:1em;
+}
+.book-detail-contents {
+  max-width:50ch;
 }
 
 .default-cover-image {
